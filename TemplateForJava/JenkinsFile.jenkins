@@ -8,10 +8,10 @@ pipeline {
                     jdk: 'openjdk9',
                     maven: 'maven3',
                     mavenLocalRepo: '/Users/alegria/apache-maven-3.8.6/bin',
-                    options:[artifactsPublisher(disabled: true)]){
-                        sh 'echo Cheguei aqui'
-                    }
-                )
+                    options:[artifactsPublisher(disabled: true)]
+                ){
+                  sh 'echo Cheguei aqui'
+                 }
             }
         }
         stage('Build') {
