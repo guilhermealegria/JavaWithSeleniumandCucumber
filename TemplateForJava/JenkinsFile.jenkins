@@ -1,16 +1,17 @@
 pipeline {
     agent any
-    tools{
-        maven 'Maven 3.8.6'
-        jdk 'jdk14'
-    }
     stages {
         stage('Initialize') {
             steps {
-                sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2 = ${M2}"
-                '''
+                withMaven(
+                    globalMavenSettingsConfig: "mavenDefaultConfig",
+                    jdk: 'openjdk9',
+                    maven: 'maven3',
+                    mavenLocalRepo: '/Users/alegria/apache-maven-3.8.6/bin',
+                    options:[artifactsPublisher(disabled: true)]){
+                        sh 'echo Cheguei aqui'
+                    }
+                )
             }
         }
         stage('Build') {
