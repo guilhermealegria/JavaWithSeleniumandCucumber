@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                echo 'Testando..'
+               sh './mvnw test'
             }
         }
                 stage('Build') {
