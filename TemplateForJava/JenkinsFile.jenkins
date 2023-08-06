@@ -1,5 +1,5 @@
 pipeline {
-    agent docker
+    agent none
 
     stages {
         stage('Test') {
@@ -8,17 +8,20 @@ pipeline {
                sh './mvnw test'
             }
         }
-                stage('Build') {
+        stage('Build') {
+            agent any
             steps {
                     echo 'Compilando..'
             }
         }
         stage('Store') {
+            agent any
             steps {
                 echo 'Armazenando....'
             }
         }
-                stage('DeploY') {
+        stage('DeploY') {
+            agent any
             steps {
                 echo 'Implantando....'
             }
