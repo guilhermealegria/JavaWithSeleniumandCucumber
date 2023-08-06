@@ -1,1 +1,26 @@
-echo "Passei por aqui"
+pipeline {
+    agent any
+
+    stages {
+        stage('Test') {
+            steps {
+                echo 'Testando..'
+            }
+        }
+                stage('Build') {
+            steps {
+                    echo 'Compilando..'
+            }
+        }
+        stage('Store') {
+            steps {
+                echo 'Armazenando....'
+            }
+        }
+                stage('DeploY') {
+            steps {
+                echo 'Implantando....'
+            }
+        }
+    }
+}
