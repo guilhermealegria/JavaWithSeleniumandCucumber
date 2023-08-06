@@ -9,13 +9,18 @@ pipeline {
                     maven: 'maven3',
                     mavenLocalRepo: '/Users/alegria/apache-maven-3.8.6/bin'
                 ){
-                  sh 'echo Cheguei aqui'
+                  echo 'Cheguei aqui'
                  }
             }
         }
         stage('Build') {
             steps {
-                    echo 'Compilando..'
+                  sh 'mvn -Dmaven.test.failure.ignore=true install'
+            }
+            post {
+                sucess{
+                    'target/surefire-reports/**/*.xml'
+                }
             }
         }
     }
