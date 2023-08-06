@@ -3,24 +3,12 @@ pipeline {
     stages {
         stage('Initialize') {
             steps {
-                withMaven(
-                    globalMavenSettingsConfig: "mavenDefaultConfig",
-                    jdk: 'openjdk9',
-                    maven: 'maven3',
-                    mavenLocalRepo: '/Users/alegria/apache-maven-3.8.6/bin'
-                ){
-                  echo 'Cheguei aqui'
-                 }
+               echo 'comecei aqui'
             }
         }
         stage('Build') {
             steps {
-                  sh 'mvn -Dmaven.test.failure.ignore=true install'
-            }
-            post {
-                success{
-                    'target/surefire-reports/**/*.xml'
-                }
+               echo 'cheguei aqui'
             }
         }
     }
