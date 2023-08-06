@@ -7,8 +7,7 @@ pipeline {
                     globalMavenSettingsConfig: "mavenDefaultConfig",
                     jdk: 'openjdk9',
                     maven: 'maven3',
-                    mavenLocalRepo: '/Users/alegria/apache-maven-3.8.6/bin',
-                    options:[artifactsPublisher(disabled: true)]
+                    mavenLocalRepo: '/Users/alegria/apache-maven-3.8.6/bin'
                 ){
                   sh 'echo Cheguei aqui'
                  }
