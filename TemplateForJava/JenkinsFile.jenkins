@@ -1,29 +1,21 @@
 pipeline {
-    agent none
-
+    agent any
+    tools{
+        maven 'Maven 3.8.6'
+        jdk 'jdk14'
+    }
     stages {
-        stage('Test') {
-            agent { docker 'adoptopenjdk/openjdk11:jdk-11.0.9.1_1' }
+        stage('Initialize') {
             steps {
-               sh './mvnw test'
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2 = ${M2}"
+                '''
             }
         }
         stage('Build') {
-            agent any
             steps {
                     echo 'Compilando..'
-            }
-        }
-        stage('Store') {
-            agent any
-            steps {
-                echo 'Armazenando....'
-            }
-        }
-        stage('DeploY') {
-            agent any
-            steps {
-                echo 'Implantando....'
             }
         }
     }
