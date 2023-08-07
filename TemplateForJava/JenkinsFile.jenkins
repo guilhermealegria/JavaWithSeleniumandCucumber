@@ -8,7 +8,7 @@ pipeline {
             steps {
                 sh '''
                     echo "M3 = $PATH{M3}"
-                    echo "WORKSPACE = $workspace"
+                    echo "WORKSPACE = ${JAVA_HOME}"
                 '''
             }
         }
