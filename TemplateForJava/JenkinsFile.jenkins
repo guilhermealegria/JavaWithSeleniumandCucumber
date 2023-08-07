@@ -14,13 +14,10 @@ pipeline {
         }
          stage('Build') {
             environment{
-                    WORKSPACE = '/var/jenkins_home/workspace/TestJenkinsFile/TemplateForJava'
+                    WORKSPACE = '/var/jenkins_home/workspace/TestJenkinsFile/TemplateForJava/'
             }
             steps {
-                sh (
-                    returnStdout: false,
-                    script: '${WORSPACE}mvn -B -DskipTests clean package'
-                )
+                sh'${WORSPACE}mvn -B -DskipTests clean package'
             }
         }
     }
