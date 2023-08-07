@@ -3,6 +3,9 @@ pipeline {
     tools{
          maven 'M3'
         }
+     environment{
+        WORKSPACE = '/var/jenkins_home/workspace/TestJenkinsFile/TemplateForJava'
+     }
     stages {
         stage('Initialize') {
             steps {
@@ -12,10 +15,6 @@ pipeline {
                 '''
             }
         }
-         stage('Build') {
-            steps {
-                sh '${WORKSPACE}/TemplateForJava/mvn -B -DskipTests clean package'
-            }
-         }
+
     }
 }
