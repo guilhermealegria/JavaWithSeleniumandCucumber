@@ -12,6 +12,20 @@ pipeline {
                 '''
             }
         }
-
+        stage('Build') {
+            steps {
+                sh '${JOB_NAME}/TemplateForJava/mvn -B -DskipTests clean package'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh '${JOB_NAME}/TemplateForJava/mvn test'
+            }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
+        }
     }
 }
