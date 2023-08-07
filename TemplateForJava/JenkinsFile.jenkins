@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Initialize') {
             steps {
-                bat '''
+                sh '''
                     echo "M3 = $PATH{M3}"
                     echo "WORKSPACE = ${WORKSPACE}"
                 '''
@@ -17,7 +17,10 @@ pipeline {
                     WORKSPACE = '/var/jenkins_home/workspace/TestJenkinsFile/TemplateForJava'
             }
             steps {
-                bat '${WORKSPACE} mvn -B -DskipTests clean package'
+                sh (
+                    returnStdout: false,
+                    script: '${WORSPACE}mvn -B -DskipTests clean package'
+                )
             }
         }
     }
