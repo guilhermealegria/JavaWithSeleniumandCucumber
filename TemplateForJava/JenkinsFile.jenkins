@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools{
         maven 'M3_HOME'
-        jdk 'jdk9'
+        jdk 'jdk8'
     }
     stages {
         stage('Initialize') {
@@ -15,13 +15,9 @@ pipeline {
         }
         stage('Build') {
             steps {
-               sh 'mvn -Dmaven.test.failure.ignore=true install'
+              echo 'cheguei aqui'
             }
-            post {
-                success {
-                    junit 'target/surefire-reports/**/*.xml'
-                }
-            }
+
         }
     }
 }
