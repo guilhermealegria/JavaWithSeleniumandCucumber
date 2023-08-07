@@ -8,23 +8,10 @@ pipeline {
             steps {
                 sh '''
                     echo "M3 = $PATH{M3}"
+                    echo "WORKSPACE = $workspace"
                 '''
             }
         }
-        stage('Build') {
-            steps {
-                sh 'mvn -B -DskipTests clean package'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'mvn test'
-            }
-            post {
-                always {
-                    junit 'target/surefire-reports/*.xml'
-                }
-            }
-        }
+
     }
 }
