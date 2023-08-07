@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools{
         maven 'M3_HOME'
-        jdk 'jdklatest'
+        jdk 'jdk9'
     }
     stages {
         stage('Initialize') {
